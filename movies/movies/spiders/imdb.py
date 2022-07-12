@@ -2,6 +2,14 @@ import scrapy
 import json
 from pathlib import Path
 import os
+from .... import config
+
+log = config.setlogger()
+
+'''
+@next
+configure logging
+'''
 
 class MovieSpider(scrapy.Spider):
     name = "imdb"
