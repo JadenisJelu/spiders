@@ -29,7 +29,10 @@ class MangaSpider(scrapy.Spider):
         links = response.xpath('/html/body/div[1]/div[3]/div[1]/div[3]/ul/li/a/@href').getall()
 
         # newest chapter
-        num = int(most_recent_chapters[0].split(' ')[-1])
+        try:
+            num = int(most_recent_chapters[0].split(' ')[-1])
+        except ValueError:
+            num = int(most_recent_chapters[0].split(' ')[1][:-1])
 
         # check bookmarks
         with open(self.bookmark_path, 'r') as f:
