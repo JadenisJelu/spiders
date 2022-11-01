@@ -45,14 +45,16 @@ class MangaSpider(scrapy.Spider):
             print(f"ADDED: {title}, {most_recent_chapters[0]}")
             self.news = True
         else:
-            chap, recent_time = bookmarks['title']
+            chap, recent_time = bookmarks[title]
             bookmark_date = datetime.strptime(recent_time, '%b %d,%Y %H:%M')
             if newest > bookmark_date:
                 i = 0
                 while i < len(most_recent_times):
                     if datetime.strptime(most_recent_times[i], '%b %d,%Y %H:%M') >= bookmark_date and most_recent_chapters[i] != chap:
                         print(f"NEW: {title}, {most_recent_chapters[i]}: {links[i]}")
-                bookmarks[title] = (most_recent_chapters[0], newest)
+                        break
+                bookmarks[title] = (most_recent_chapters[0],  most_recent_times[0])
+                # print(bookmarks[title])
                 self.news = True
         
         if self.news:
