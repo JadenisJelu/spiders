@@ -52,7 +52,11 @@ class MangaSpider(scrapy.Spider):
                 while i < len(most_recent_times):
                     if datetime.strptime(most_recent_times[i], '%b %d,%Y %H:%M') >= bookmark_date and most_recent_chapters[i] != chap:
                         print(f"NEW: {title}, {most_recent_chapters[i]}: {links[i]}")
+                        i += 1
+                    else:
+                        # print('test')
                         break
+                    # print('test')
                 bookmarks[title] = (most_recent_chapters[0],  most_recent_times[0])
                 # print(bookmarks[title])
                 self.news = True
