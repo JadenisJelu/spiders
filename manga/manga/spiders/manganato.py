@@ -17,11 +17,12 @@ class MangaSpider(scrapy.Spider):
             'https://readmanganato.com/manga-hu985229', # The Great Mage Returns After 4000 Years
             'https://readmanganato.com/manga-lu989229', # Reincarnation Of The Suicidal Battle God
             'https://readmanganato.com/manga-jo986949', # Memorize
-            'https://readmanganato.com/manga-iw985579', # Omniscient Reader’S Viewpoint
+            'https://readmanganato.com/manga-iz985608', # Omniscient Reader’S Viewpoint
             'https://readmanganato.com/manga-nb990510', # The World After The Fall
             'https://readmanganato.com/manga-ko987549', # Sss-Class Suicide Hunter
             'https://chapmanganato.com/manga-ax951880', # tales of demons and gods
-            'https://chapmanganato.com/manga-bf979214', # versatile mage
+            # 'https://chapmanganato.com/manga-bf979214', # versatile mage
+            'https://chapmanganato.com/manga-ng991163' # I Obtained A Mythic Item
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
